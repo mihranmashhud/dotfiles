@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pactl load-module module-jack-sink client_name="Main" channels=2 connect=no
+pactl load-module module-jack-sink client_name="Chat" channels=2 connect=no
+pacmd load-module module-jack-source client_name="Source" channels=2 connect=no
+pactl set-default-sink jack_out
+pactl set-default-source jack_in
+alsa_out -c 2 -d hw:S5,0 -j "Chat Output" & # Chat Output
+carla "~/Documents/Carla/Mic Setup.carxp" & # Open Carla

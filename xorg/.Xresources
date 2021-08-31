@@ -1,0 +1,49 @@
+#include "/home/mihranmashhud/.xcolors/metacognition"
+
+! Color database
+*.foreground:   FOREGROUND
+*.background:   BACKGROUND
+
+*.color0:   COLOR0
+*.color1:   COLOR1
+*.color2:   COLOR2
+*.color3:   COLOR3
+*.color4:   COLOR4
+*.color5:   COLOR5
+*.color6:   COLOR6
+*.color7:   COLOR7
+*.color8:   COLOR8
+*.color9:   COLOR9
+*.color10:  COLOR10
+*.color11:  COLOR11
+*.color12:  COLOR12
+*.color13:  COLOR13
+*.color14:  COLOR14
+*.color15:  COLOR15
+
+*.black: COLOR0
+*.darkgrey: COLOR8
+*.red: COLOR1
+*.brightred: COLOR9
+*.green: COLOR2
+*.brightgreen: COLOR10
+*.yellow: COLOR3
+*.brightyellow: COLOR11
+*.blue: COLOR4
+*.brightblue: COLOR12
+*.magenta: COLOR5
+*.brightmagenta: COLOR13
+*.cyan: COLOR6
+*.brightcyan: COLOR14
+*.lightgrey: COLOR7
+*.white: COLOR15
+
+! Rofi Theming
+rofi.color-window: BACKGROUND, BACKGROUND, BACKGROUND
+rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR4
+rofi.color-active: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR4
+rofi.color-urgent: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR4
+
+! Cursor Theme
+Xcursor.theme:  Bibata-Modern-Classic
+Xcursor.size: 16

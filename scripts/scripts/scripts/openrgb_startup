@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+openrgb -p sunrise.orp

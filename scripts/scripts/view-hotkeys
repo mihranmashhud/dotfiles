@@ -1,0 +1,69 @@
+#!/usr/bin/python3
+
+# Get Home Dir
+import os
+
+home_dir = os.environ['HOME']
+sxhkdrc_path = "{}/.config/sxhkd/sxhkdrc".format(home_dir)
+
+# Get file as a string
+with open(sxhkdrc_path) as file:
+    sxhkdrc = file.read()
+    
+sxhkdrc = sxhkdrc.split("\n")
+
+# Filter unwanted lines
+def wanted(line):
+    if len(line) < 2:
+        return False
+    elif line[0] == "#" and line[1] != "#":
+        return False
+    elif line[0] == " " or line[0] == "\t":
+        return False
+    return True 
+
+sxhkdrc = list(filter(wanted, sxhkdrc))
+
+hotkeys = []
+
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
+
+def formatSection(line):
+    line = line.replace('#','').strip()
+    return '{}{}{}{}'.format(color.BLUE,color.BOLD,line,color.END)
+
+def formatSubSection(line):
+    line = line.replace('#','').strip()
+    return '{}{}{}'.format(color.BLUE,line,color.END)
+
+maxLen = max(map(len,filter(lambda line: line[0] != "#",sxhkdrc)))
+
+for i in range(len(sxhkdrc)-1):
+    currline = sxhkdrc[i]
+    nextline = sxhkdrc[i+1]
+
+    if currline[0:3] == "###" and currline[len(currline)-3:] == "###":
+        hotkeys.append(formatSection(currline))
+    elif currline[0:2] == "##" and currline[len(currline)-2:] == "##":
+        hotkeys.append(formatSubSection(currline))
+    elif currline[0] == "#" and nextline[0] != "#":
+        hotkeys.append(
+                "  {0:{1}}  {2}".format(
+                    nextline,
+                    maxLen,
+                    currline.replace("#","").strip()))
+
+hotkeys = "\n".join(hotkeys)
+                
+print(hotkeys)

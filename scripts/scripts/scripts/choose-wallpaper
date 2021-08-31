@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+cd $HOME/Pictures/Backgrounds
+
+CHOICE=/tmp/background-choice
+
+kitty -- ranger --choosefile=$CHOICE || exit 1
+
+pic=$(cat $CHOICE)
+
+feh --no-fehbg --bg-fill $pic

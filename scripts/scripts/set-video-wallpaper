@@ -1,0 +1,64 @@
+#!/bin/bash
+
+PIDFILE="/var/run/user/$UID/bg.pid"
+
+declare -a PIDs
+
+WL_DIR="$HOME/Videos/Backgrounds"
+THUMB_DIR="$HOME/Videos/Background Thumbnails"
+
+cd $WL_DIR
+
+WL=""
+
+_screen() {
+  xwinwrap -ov -ni -g "$1" -- mpv --fullscreen \
+    --no-stop-screensaver \
+    --vo=gpu --hwdec=vaapi \
+    --x11-bypass-compositor=yes \
+    --loop-file --no-audio --no-osc --no-osd-bar -wid WID --no-input-default-bindings \
+    "$2" &
+  PIDs+=($!)
+}
+
+_kill() {
+  while read p; do
+    [[ $(ps -p "$p" -o comm=) == "xwinwrap" ]] && pkill -P "$p" && echo "Wallpaper Killed!";
+  done < $1
+}
+
+if [[ "$1" == "-r" ]]
+then
+  WL=`ls | shuf -n1`
+  echo $WL_DIR/$WL > current-wallpaper
+elif [[ "$1" == "-uc" ]]
+then
+  WL=`cat current-wallpaper | xargs basename`
+elif [[ "$1" == "-k" ]]
+then
+  _kill $PIDFILE
+  exit 0
+else
+  kitty -- ranger --choosefile=current-wallpaper
+  WL=`cat current-wallpaper | xargs basename`
+fi
+
+THUMB="$THUMB_DIR/${WL%%.*}.png"
+
+RES=`xrandr -q | grep ' connected' | grep -oP '\d+x\d+\+\d+\+\d+'`
+PRIM_RES=`echo $RES | grep -oP '\d+x\d+' | head -n1`
+
+[[ -e "$THUMB" ]] || ffmpeg -ss 0.5 -i "$WL_DIR/$WL" -vframes 1 -s "$PRIM_RES" -f image2 "$THUMB"
+
+[[ "$1" != "-uc" ]] && multilockscreen --update "$THUMB"
+
+_kill $PIDFILE
+
+sleep 0.5
+
+for i in $( xrandr -q | grep ' connected' | grep -oP '\d+x\d+\+\d+\+\d+')
+do
+  _screen "$i" "$WL_DIR/$WL"
+done
+
+printf "%s\n" "${PIDs[@]}" > $PIDFILE

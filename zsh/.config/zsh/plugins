@@ -1,0 +1,19 @@
+# Completion
+ohmyzsh/ohmyzsh path:lib/completion.zsh
+
+# Theme
+ohmyzsh/ohmyzsh path:lib/git.zsh
+ohmyzsh/ohmyzsh path:lib/theme-and-appearance.zsh
+tobyjamesthomas/pi kind:zsh
+
+# Plugins
+ohmyzsh/ohmyzsh path:plugins/gitfast
+ohmyzsh/ohmyzsh path:plugins/wd
+ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/compleat
+ohmyzsh/ohmyzsh path:plugins/pip
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/history
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+ael-code/zsh-colored-man-pages

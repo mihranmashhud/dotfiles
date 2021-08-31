@@ -1,0 +1,19 @@
+#!/bin/bash
+
+echo "Performing a dry-run of the push operation:"
+
+rsync -anvzP --exclude .Xauthority /mnt/cs-server/ mmashhud@linux.student.cs.uwaterloo.ca:.
+
+read -p "Safe To procede? [y/N]: " PROCEDE
+
+case $PROCEDE in
+  y | Y)
+    echo "Proceding with push operation..."
+    rsync -azP --exclude .Xauthority /mnt/cs-server/ mmashhud@linux.student.cs.uwaterloo.ca:.
+    ;;
+  *)
+    echo "Cancelling push operation."
+    exit 1
+    ;;
+esac
+
