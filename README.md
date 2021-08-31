@@ -8,7 +8,7 @@ Export a `$STOW_FOLDERS` environment variable listing which packages to install.
 
 ## To uninstall:
 
-Pretty much the same as installation but instead run the `clean` script.
+Pretty much the same as installation but instead run the `clean.sh` script.
 
 ## Install individual packages:
 
