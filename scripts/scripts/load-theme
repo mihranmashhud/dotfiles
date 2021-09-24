@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+grep '#define' $1 | while read line; do
+  var=`echo $line | awk '{print $2}'`
+  color=`echo $line | awk '{print $NF}'`
+  declare $var=$color
+  export $var
+done

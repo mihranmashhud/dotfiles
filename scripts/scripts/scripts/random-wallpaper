@@ -1,6 +1,0 @@
-#! /usr/bin/env bash
-
-BACKGROUND_DIR="$HOME/Pictures/Backgrounds"
-
-cd $BACKGROUND_DIR
-feh --no-fehbg --bg-fill $(ls | shuf -n1)

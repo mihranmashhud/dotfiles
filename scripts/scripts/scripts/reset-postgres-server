@@ -1,6 +1,0 @@
-#! /usr/bin/bash
-
-sudo su postgres -c "dropdb $1" 
-sudo su postgres -c "dropdb $1_email" 
-sudo su postgres -c "createdb $1" && sudo su pgsqluser -c "psql $1 < $2"
-sudo su postgres -c "createdb $1_email"

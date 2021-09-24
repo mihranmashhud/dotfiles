@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-
-DEVICES=`nmcli device show | grep GENERAL.DEVICE | sed 's/ *//g' | cut -d: -f2`
-
-for DEV in $DEVICES; do
-  echo "Enabling $DEV"
-  sudo ip link set "$DEV" up
-done
