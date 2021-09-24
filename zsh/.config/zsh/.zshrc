@@ -12,6 +12,15 @@ source /usr/share/nvm/init-nvm.sh
 # Node Modules path
 export PATH=$HOME/.node_modules/bin:$PATH
 
+# Android/Flutter
+# export PATH="$PATH:/opt/android-sdk/platform-tools"
+# export PATH="$PATH:/opt/android-sdk/emulator"
+# export PATH="$PATH:/opt/android-sdk/tools"
+# export PATH="$PATH:/opt/android-sdk/tools/bin"
+# export JAVA_OPTS="-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee"
+# export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+# export ANDROID_SDK_ROOT="/opt/android-sdk"
+
 # Needed here by other programs
 autoload -Uz compinit
 compinit
@@ -86,8 +95,6 @@ _comp_options+=(globdots)
 # Personal aliases:
 # Update zsh plugins
 alias zsh-update="antibody bundle < $HOME/.config/zsh/plugins > $HOME/.config/zsh/plugins.sh"
-# Config alias for dotfile managment
-alias config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
 # rmtrash aliases
 alias rm='rmtrash --forbid-root'
 alias rmdir='rmdirtrash --forbid-root'
@@ -102,5 +109,3 @@ alias zathura='~/scripts/devour zathura'
 alias docker-compose='sudo docker-compose'
 # Alias yay to paru
 alias yay='paru'
-# Alias cd + ls to cl
-alias cl='cd $1 && ls'
