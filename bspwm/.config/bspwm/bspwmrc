@@ -23,7 +23,7 @@ if [[ "$(hostname)" == 'mihranLaptop' ]]; then
   bspc config top_padding 20
 elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
   # Primary display settings
-  xrandr --output DisplayPort-0 --primary --mode 1920x1080 --rate 165
+  xrandr --output DisplayPort-0 --primary --mode 1920x1080 --rate 144
   bspc monitor DisplayPort-0 -d 0 1 2 3 4
   bspc monitor DVI-D-0 -d 5 6 7 8 9
   ds4drv --hidraw --daemon
