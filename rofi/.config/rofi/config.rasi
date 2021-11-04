@@ -19,12 +19,12 @@ configuration {
 }
 
 * {
-	bg: ${BACKGROUND};
+	/* bg: ${BACKGROUND};
 	al: ${COLOR8};
 	fg: ${FOREGROUND};
 	ac: ${COLOR4};
 	se: ${COLOR8};
-	red: ${COLOR1};
+	red: ${COLOR1}; */
 	background: @bg;
 	foreground: @fg;
 	alternate-normal-background: @bg;
