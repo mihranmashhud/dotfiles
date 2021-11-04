@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+picom --experimental-backends -bfc # compositor
