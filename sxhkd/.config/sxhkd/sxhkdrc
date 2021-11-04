@@ -48,7 +48,7 @@ super + Return
 
 ## Open the program launcher
 super + @space
-  source ~/scripts/load-theme ~/.xcolors/metacognition && rofi -modi drun,window,filebrowser -show drun
+  rofi -theme-str "$(~/scripts/rofi-theme-str ~/.xcolors/metacognition)" -modi drun,window,filebrowser -show drun
 
 ## Reload sxhkd config files
 super + Escape
