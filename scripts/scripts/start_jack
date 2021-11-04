@@ -7,3 +7,19 @@ pactl set-default-sink jack_out
 pactl set-default-source jack_in
 alsa_out -c 2 -d hw:S5,0 -j "Chat Output" & # Chat Output
 carla "~/Documents/Carla/Mic Setup.carxp" & # Open Carla
+
+# wait for carla to start
+while ! pgrep -f "carla" > /dev/null; do sleep 0.1; done
+sleep 1
+
+# Patchbay connections
+jack_connect system:capture_1 Carla:audio-in1
+jack_connect system:capture_2 Carla:audio-in2
+jack_connect Carla:audio-out1 Source:front-left
+jack_connect Carla:audio-out2 Source:front-right
+jack_disconnect Carla:audio-out1 system:playback_1
+jack_disconnect Carla:audio-out2 system:playback_2
+jack_connect Main:front-left system:playback_1
+jack_connect Main:front-right system:playback_2
+jack_connect Chat:front-left system:playback_1
+jack_connect Chat:front-right system:playback_2
