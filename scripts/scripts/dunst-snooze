@@ -6,6 +6,7 @@ SNOOZE_TIME=$(sed '2q;d' $DUNST_STATE_FILE)
 
 COLOR_OFF=`xgetres darkgrey`
 COLOR_ON=`xgetres foreground`
+THEMESTR=`~/scripts/rofi-theme-str ~/.xcolors/metacognition`
 
 show() {
   output=""
@@ -55,7 +56,7 @@ delayed_resume() {
 }
 
 start_snooze() {
-  menu=`echo "Until Turned Off|15 minutes|30 minutes|45 minutes|60 minutes|90 minutes|2 hours|3 hours|4 hours|5 hours|6 hours|Cancel" | rofi -lines 6 -columns 2 -sep "|" -dmenu -i -p "Snooze for"`
+  menu=`rofi -theme-str "$THEMESTR" -lines 6 -columns 2 -sep "|" -dmenu -i -p "Snooze for" <<< "Until Turned Off|15 minutes|30 minutes|45 minutes|60 minutes|90 minutes|2 hours|3 hours|4 hours|5 hours|6 hours|Cancel"`
   length='0m'
   case $menu in
     'Until Turned Off')
@@ -91,7 +92,7 @@ start_snooze() {
 }
 
 snoozing_menu() {
-  menu=`echo 'Turn Snooze Off|Cancel' | rofi -sep "|" -dmenu -i`
+  menu=`echo 'Turn Snooze Off|Cancel' | rofi -theme-str "$THEMESTR" -sep "|" -dmenu -i`
   case $menu in
     *'Off')
       toggle
