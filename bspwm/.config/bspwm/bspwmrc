@@ -4,7 +4,6 @@
 xsetroot -cursor_name left_ptr & # default cursor
 udiskie & # usb mounting
 sxhkd & # keybindings
-picom -bfc # compositor
 #caffeine &
 bg=$(xgetres background)
 fg=$(xgetres foreground)
@@ -13,6 +12,8 @@ $HOME/.config/polybar/launch.sh & # polybar
 
 # MONITOR
 if [[ "$(hostname)" == 'mihranLaptop' ]]; then
+  picom -bfc # compositor
+
   #conky -c ~/.config/conky/thinkpadIMG.conf &
   #conky &
   bspc monitor $(bspc query --monitors | head) -d 0 1 2 3 4 5 6 7 8 9
@@ -22,6 +23,7 @@ if [[ "$(hostname)" == 'mihranLaptop' ]]; then
   light-locker --lock-on-suspend &
   bspc config top_padding 20
 elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
+  picom --experimental-backends -bfc # compositor
   # Primary display settings
   xrandr --output DisplayPort-0 --primary --mode 1920x1080 --rate 144
   bspc monitor DisplayPort-0 -d 0 1 2 3 4
@@ -31,10 +33,11 @@ elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
   ~/scripts/random-wallpaper
   # LightDM Lockscreen
   light-locker --lock-on-suspend &
-  # JACK Server
+  # PulseAudio + JACK Server
+  pavucontrol &
   qjackctl -s &
   # OpenRGB
-  $HOME/scripts/openrgb_startup
+  $HOME/scripts/openrgb_startup &
 
   bspc config top_padding 40
 fi
@@ -47,7 +50,7 @@ bspc config bottom_padding       0
 bspc config left_padding         0
 bspc config right_padding        0
 bspc config single_monocle       false
-bspc config click_to_focus       true
+bspc config click_to_focus       any
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true

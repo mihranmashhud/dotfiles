@@ -4,4 +4,5 @@ bspc rule -a QjackCtl state=pseudo_tiled
 bspc rule -a Carla2 desktop=^10
 bspc rule -a Wine desktop=^4 state=psuedo_tiled
 bspc rule -a RuneBook desktop=^5
-bspc rule -a "leagueclientux.exe" desktop=^4 state=pseudo_tiled
+bspc rule -a "leagueclient.exe" desktop=^4 state=pseudo_tiled
+bspc rule -a Pavucontrol desktop=^10
