@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+/usr/bin/rofi -theme-str "`~/scripts/rofi-theme-str ~/.xcolors/metacognition`" "$@"

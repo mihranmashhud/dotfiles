@@ -2,18 +2,26 @@
 
 echo "Performing a dry-run of the push operation:"
 
-rsync -anvzP --exclude .Xauthority /mnt/cs-server/ mmashhud@linux.student.cs.uwaterloo.ca:.
+mapfile -t excludes_arr < $HOME/scripts/.cs-server-ignore
+
+declare -a excludes
+
+for e in "${excludes_arr[@]}"
+do
+  excludes+=( --exclude="$e" )
+done
+
+rsync -anvzP "${excludes[@]}" /mnt/cs-server/ mmashhud@linux.student.cs.uwaterloo.ca:.
 
 read -p "Safe To procede? [y/N]: " PROCEDE
 
 case $PROCEDE in
   y | Y)
     echo "Proceding with push operation..."
-    rsync -azP --exclude .Xauthority /mnt/cs-server/ mmashhud@linux.student.cs.uwaterloo.ca:.
+    rsync -azP "${excludes[@]}" /mnt/cs-server/ mmashhud@linux.student.cs.uwaterloo.ca:.
     ;;
   *)
     echo "Cancelling push operation."
     exit 1
     ;;
 esac
-

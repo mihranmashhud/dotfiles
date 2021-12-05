@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+THEMESTR="$(~/scripts/rofi-theme-str ~/.xcolors/metacognition)"
+
 # CONFIGURATION
 LOCATION=0
 YOFFSET=0
@@ -62,7 +64,7 @@ show_devices (){
 }
 
 show_menu () {
-    menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -hide-scrollbar -line-padding 4 -padding 20 -lines 6 <<< "Battery: $DEV_BATTERY%|Ping|Find Device|Send File|Browse Files|Unpair")"
+    menu="$(rofi -theme-str "$THEMESTR" -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -hide-scrollbar -line-padding 4 -padding 20 -lines 6 <<< "Battery: $DEV_BATTERY%|Ping|Find Device|Send File|Browse Files|Unpair")"
                 case "$menu" in
                     *'Ping') $wrapper ping $DEV_ID;;
                     *'Find Device') $wrapper ring $DEV_ID;;
@@ -73,14 +75,14 @@ show_menu () {
 }
 
 show_pmenu () {
-    menu="$(rofi -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -hide-scrollbar -line-padding 1 -padding 20 -lines 1<<<"Pair Device")"
+    menu="$(rofi -theme-str "$THEMESTR" -sep "|" -dmenu -i -p "$DEV_NAME" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -hide-scrollbar -line-padding 1 -padding 20 -lines 1 <<< "Pair Device")"
                 case "$menu" in
                     *'Pair Device') $wrapper requestPair $DEV_ID
                 esac
 }
 
 show_pmenu2 () {
-    menu="$(rofi -sep "|" -dmenu -i -p "$1 has sent a pairing request" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -hide-scrollbar -line-padding 4 -padding 20 -lines 2 <<< "Accept|Reject")"
+    menu="$(rofi -theme-str "$THEMESTR" -sep "|" -dmenu -i -p "$1 has sent a pairing request" -location $LOCATION -yoffset $YOFFSET -xoffset $XOFFSET -hide-scrollbar -line-padding 4 -padding 20 -lines 2 <<< "Accept|Reject")"
                 case "$menu" in
                     *'Accept') $wrapper acceptPairing $DEV_ID;;
                     *) $wrapper rejectPairing $DEV_ID;;

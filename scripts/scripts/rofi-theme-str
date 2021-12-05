@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+THEME_FILE=$1
+color() {
+  echo `grep "#define" "$THEME_FILE" | grep -P "\b$1\b" | awk '{print $NF}'`
+}
+echo -n "* {
+  bg: `color BACKGROUND`; 
+  al: `color COLOR8`;
+  fg: `color FOREGROUND`;
+  ac: `color COLOR4`;
+  se: `color COLOR8`;
+  red: `color COLOR1`;
+}"

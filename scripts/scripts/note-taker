@@ -5,6 +5,7 @@ set -e
 NOTEDIR=$HOME/Documents/Notes
 NEWNOTE="note-$(date +%-F).md"
 NEWNOTE_MSG="New Note"
+THEMESTR=`~/scripts/rofi-theme-str ~/.xcolors/metacognition`
 
 cd $NOTEDIR
 
@@ -13,9 +14,9 @@ if [ -f ./$NEWNOTE ]; then
 fi
 
 if [[ -z $(ls -A $NOTEDIR) ]]; then
-  FILENAME=`echo "[$NEWNOTE_MSG]" | rofi -dmenu -i -p "Notes"`
+  FILENAME=`echo "[$NEWNOTE_MSG]" | rofi -theme-str "$THEMESTR" -dmenu -i -p "Notes"`
 else
-  FILENAME=`ls | sed "1 i [$NEWNOTE_MSG]" | rofi -dmenu -i -p "Notes"`
+  FILENAME=`ls | sed "1 i [$NEWNOTE_MSG]" | rofi -theme-str "$THEMESTR" -dmenu -i -p "Notes"`
 fi
 
 if [[ $FILENAME == "[$NEWNOTE_MSG]" ]]; then

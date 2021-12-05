@@ -2,18 +2,26 @@
 
 echo "Performing a dry-run of the pull operation:"
 
-rsync -anvzP --exclude .Xauthority mmashhud@linux.student.cs.uwaterloo.ca:./ /mnt/cs-server --delete
+mapfile -t excludes_arr < $HOME/scripts/.cs-server-ignore
+
+declare -a excludes
+
+for e in "${excludes_arr[@]}"
+do
+  excludes+=( --exclude="$e" )
+done
+
+rsync -anvzP "${excludes[@]}" mmashhud@linux.student.cs.uwaterloo.ca:./ /mnt/cs-server --delete
 
 read -p "Safe To procede? [y/N]: " PROCEDE
 
 case $PROCEDE in
   y | Y)
     echo "Proceding with pull operation..."
-    rsync -azP --exclude .Xauthority mmashhud@linux.student.cs.uwaterloo.ca:./ /mnt/cs-server --delete
+    rsync -azP "${excludes[@]}" mmashhud@linux.student.cs.uwaterloo.ca:./ /mnt/cs-server --delete
     ;;
   *)
     echo "Cancelling pull operation."
     exit 1
     ;;
 esac
-
