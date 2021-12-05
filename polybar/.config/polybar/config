@@ -212,7 +212,7 @@ interval = 1.0
 time =  %I:%M %p
 time-alt =  %H:%M:%S
 date =
-date-alt =  %Y-%m-%d
+date-alt =  %a %Y-%m-%d
 
 label = %date% %time%
 
