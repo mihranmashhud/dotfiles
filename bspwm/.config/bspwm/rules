@@ -7,3 +7,5 @@ bspc rule -a RuneBook desktop=^5
 bspc rule -a "leagueclient.exe" desktop=^4 state=pseudo_tiled
 bspc rule -a "leagueclientux.exe" desktop=^4 state=pseudo_tiled
 bspc rule -a Pavucontrol desktop=^10
+bspc rule -a "deadcells" state=fullscreen
+bspc rule -a "discord" desktop=^6
