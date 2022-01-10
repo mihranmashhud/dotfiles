@@ -85,7 +85,7 @@ monitor = DisplayPort-0
 
 [bar/mydesktopbar2]
 inherit = bar/mydesktopbar
-monitor = DVI-D-0
+monitor = HDMI-A-0
 
 [bar/mybar]
 inherit = bar/base

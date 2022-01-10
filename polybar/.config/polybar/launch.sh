@@ -14,6 +14,4 @@ do
   sleep 0.2
 done
 
-rm /tmp/dunst_state
-
 echo "Bars launched"
