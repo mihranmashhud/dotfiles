@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo virsh start win10
+sleep 10
+looking-glass-client -F
