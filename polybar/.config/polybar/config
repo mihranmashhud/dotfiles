@@ -77,7 +77,8 @@ inherit = bar/base
 monitor = ${env:MONITOR:DisplayPort-0}
 modules-left = bspwm xwindow
 modules-center = date 
-modules-right = tray-toggle caffeine snooze kdeconnect wlan eth powermenu
+# modules-right = tray-toggle caffeine snooze kdeconnect wlan eth powermenu
+modules-right = tray-toggle caffeine snooze wlan eth powermenu
 
 [bar/mydesktopbar1]
 inherit = bar/mydesktopbar
