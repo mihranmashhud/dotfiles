@@ -9,3 +9,4 @@ bspc rule -a "leagueclientux.exe" desktop=^4 state=pseudo_tiled
 bspc rule -a Pavucontrol desktop=^10
 bspc rule -a "deadcells" state=fullscreen
 bspc rule -a "discord" desktop=^6
+bspc rule -a "Origin" state=floating
