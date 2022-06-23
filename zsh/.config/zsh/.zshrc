@@ -109,3 +109,5 @@ alias zathura='~/scripts/devour zathura'
 alias docker-compose='sudo docker-compose'
 # Alias yay to paru
 alias yay='paru'
+# Replay buffer alias
+alias start-replay-buffer='obs --startreplaybuffer --minimize-to-tray &'
