@@ -1,11 +1,27 @@
 #!/usr/bin/bash
 
-cd $HOME/Pictures/Backgrounds
-
 CHOICE=/tmp/background-choice
 
-kitty -- ranger --choosefile=$CHOICE || exit 1
+if [[ "$(hostname)" == 'mihranLaptop' ]]; then
+  cd $HOME/Pictures/Backgrounds
 
-pic=$(cat $CHOICE)
+  kitty -- ranger --choosefile=$CHOICE || exit 1
 
-feh --no-fehbg --bg-fill $pic
+  pic=$(cat $CHOICE)
+
+  feh --no-fehbg --bg-fill $pic
+elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
+  cd $HOME/Pictures/WallEngPreviews
+
+  kitty -- ranger --choosefile=$CHOICE || exit 1
+
+  filename=$(basename $(cat $CHOICE))
+
+  WE_ID=${filename%.*}
+
+  killall wallengine
+
+  echo $WE_ID
+
+  ~/.local/share/Steam/steamapps/common/wallpaper_engine/wallengine --screen-root DisplayPort-0 --screen-root HDMI-A-0 $WE_ID --fps 30 &
+fi

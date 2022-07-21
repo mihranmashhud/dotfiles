@@ -1,6 +1,12 @@
 #! /usr/bin/env bash
 
-BACKGROUND_DIR="$HOME/Pictures/Backgrounds"
-
-cd $BACKGROUND_DIR
-feh --no-fehbg --bg-fill $(ls | shuf -n1)
+if [[ "$(hostname)" == 'mihranLaptop' ]]; then
+  cd $HOME/Pictures/Backgrounds
+  feh --no-fehbg --bg-fill $(ls | shuf -n1)
+elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
+  cd $HOME/Pictures/WallEngPreviews
+  rand=$(ls | shuf -n1)
+  WE_ID=${rand%.*}
+  killall wallengine
+  ~/.local/share/Steam/steamapps/common/wallpaper_engine/wallengine --screen-root DisplayPort-0 --screen-root HDMI-A-0 $WE_ID --fps 30&
+fi
