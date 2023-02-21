@@ -13,7 +13,6 @@ Print; g
 Print; r
   simplescreenrecorder
 
-
 ## Lock the screen
 alt + shift + x
   loginctl lock-session
@@ -60,7 +59,7 @@ super + n
 
 ## Emoji picker
 super + @period
-  rofi -show emoji -modi emoji
+  rofi -theme-str "$(~/scripts/rofi-theme-str ~/.xcolors/metacognition)" -show emoji -modi emoji
 
 ### Bspwm hotkeys ###
 
@@ -111,7 +110,7 @@ super + {p,b,comma,period}
 
 ## Focus the next/previous node in the current desktop
 super + {_,shift + }c
-  bspc node -f {next,prev}.local
+  bspc node -f {next,prev}.local.window
 
 ## Focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -156,7 +155,7 @@ super + ctrl + shift + space
 ## Move the focused window to the preselection
 super + ctrl + p
   bspc node -n 'last.!automatic.local'
-
+https
 
 ## Move & Resize ##
 
