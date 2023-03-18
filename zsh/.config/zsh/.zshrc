@@ -111,6 +111,10 @@ alias clip='xclip -selection clipboard'
 # rmtrash aliases
 alias rm='rmtrash --forbid-root'
 alias rmdir='rmdirtrash --forbid-root'
+# Better ls
+alias ls="exa"
+# Better cat
+alias cat="bat"
 # CS server (if I ever need it)
 alias cs-server="ssh -t -X -Y mmashhud@linux.student.cs.uwaterloo.ca 'zsh -l'"
 alias sync-cs-server='~/scripts/push-cs-server && ~/scripts/pull-cs-server'
