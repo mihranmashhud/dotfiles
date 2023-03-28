@@ -1,0 +1,143 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Fira Code Nerd Font, monospace;
+    font-weight: bold;
+    font-size: 9pt;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+    color: @theme_text_color;
+}
+
+tooltip {
+    background: @theme_bg_color;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: @borders;
+}
+
+#workspaces button {
+    padding: 5px;
+    color: #313244;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#workspaces button.active {
+    color: @theme_selected_fg_color;
+}
+
+#workspaces button.focused {
+    color: #a6adc8;
+    background: #eba0ac;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: @warning_color;
+    background: #a6e3a1;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: @theme_bg_color;
+    color: @theme_unfocused_selected_fg_color;
+    border-radius: 10px;
+}
+
+#custom-language,
+#custom-updates,
+#custom-caffeine,
+#custom-weather,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#workspaces,
+#tray,
+#idle_inhibitor,
+#cpu,
+#memory,
+#backlight {
+    background: @theme_base_color;
+    padding: 0px 10px;
+    margin: 0px 3px;
+    margin-top: 8px;
+    border: 1px solid @borders;
+    border-radius: 10px;
+}
+
+#custom-caffeine {
+    color: #89DCEB;
+}
+
+#custom-language {
+    color: #F38BA8;
+}
+
+#window {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#clock {
+    color: #FAB387;
+}
+
+#backlight {
+    color: #89B4FA;
+}
+
+#network {
+    color: #F9E2AF;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+#pulseaudio {
+    color: #89B4FA;
+}
+
+#pulseaudio.microphone {
+    color: #CBA6F7;
+    margin-right: 5px;
+    border-radius: 0 10px 10px 0;
+}
+
+@keyframes charging {
+    to {
+        background: #A6E3A1;
+        color: @theme_base_color;
+    }
+}
+
+#battery {
+    color: #A6E3A1;
+    padding-right: 10px;
+    border-right: 0;
+    border-radius: 10px 0 0 10px;
+}
+#battery.charging {
+    animation-name: charging;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#battery.bat1 {
+    border-right: 1px solid @borders;
+    margin-left: -3px;
+    border-left: 0;
+    border-radius: 0 10px 10px 0;
+}
+#battery.warning:not(.charging) {
+    color: #FFCC6E;
+}
+#battery.critical:not(.charging) {
+    color: #FE6D73;
+}

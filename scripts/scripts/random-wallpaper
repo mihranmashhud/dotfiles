@@ -1,12 +1,15 @@
 #! /usr/bin/env bash
 
-if [[ "$(hostname)" == 'mihranLaptop' ]]; then
-  cd $HOME/Pictures/Backgrounds
-  feh --no-fehbg --bg-fill $(ls | shuf -n1)
-elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
-  cd $HOME/Pictures/WallEngPreviews
-  rand=$(ls | shuf -n1)
-  WE_ID=${rand%.*}
-  killall wallengine
-  ~/.local/share/Steam/steamapps/common/wallpaper_engine/wallengine --screen-root DisplayPort-0 --screen-root HDMI-A-0 $WE_ID --fps 30&
+CHOICE=/tmp/background-choice
+
+cd $HOME/Pictures/Backgrounds
+
+pic=`ls | grep -v "$(cat $CHOICE)" | shuf -n1`
+
+echo $pic > $CHOICE
+
+if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+  swww img $pic --transition-type center
+else
+  feh --no-fehbg --bg-fill $pic
 fi
