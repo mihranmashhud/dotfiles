@@ -1,25 +1,4 @@
 {
-    "layer": "top",
-    "position": "top",
-    "gtk-layer-shell": true,
-    "modules-left": [
-        "wlr/workspaces",
-        "hyprland/window"
-    ],
-    "modules-center": [
-        "backlight",
-        "clock",
-        "pulseaudio"
-    ],
-    "modules-right": [
-        "tray",
-        "cpu",
-        "memory",
-        "network",
-        "battery",
-        "battery#bat1"
-    ],
-
     "hyprland/window": {
         "format": "{}",
         "seperate-outputs": true
@@ -27,8 +6,9 @@
     "wlr/workspaces": {
         // "on-scroll-up": "hyprctl dispatch workspace e+1",
         // "on-scroll-down": "hyprctl dispatch workspace e-1",
-        "all-outputs": true,
+        "all-outputs": false,
         "on-click": "activate",
+        "sort-by-number": true,
         "format": "{name}"
     },
     "custom/updates": {
@@ -42,7 +22,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{: %R   %d/%m}",
+        "format": "{: %I:%M %p   %d/%m}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "backlight": {
@@ -88,7 +68,7 @@
     },
     "network": {
         "format-wifi": "{icon}  {essid}",
-        "format-ethernet": "󰈀 {ipaddr} {bandwidthDownBytes}",
+        "format-ethernet": "󰈀 {bandwidthDownBytes}",
         "format-disconnected": "",
         "format-icons": [
             "󰤯",

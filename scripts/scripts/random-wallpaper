@@ -6,6 +6,10 @@ cd $HOME/Pictures/Backgrounds
 
 pic=`ls | grep -v "$(cat $CHOICE)" | shuf -n1`
 
+if [ -z "$pic" ]; then
+  pic=`ls | shuf -n1`
+fi
+
 echo $pic > $CHOICE
 
 if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then

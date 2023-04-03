@@ -1,0 +1,22 @@
+{
+    "layer": "top",
+    "position": "top",
+    "gtk-layer-shell": true,
+
+    "modules-left": [
+        "wlr/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "cpu",
+        "memory",
+        "network"
+    ],
+    "include": [
+        "~/.config/waybar/modules.json"
+    ]
+}
