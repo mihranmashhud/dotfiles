@@ -1,4 +1,4 @@
-#! /usr/bin/sh
+#!/usr/bin/sh
 
 # AUTOSTART
 xsetroot -cursor_name left_ptr & # default cursor
@@ -20,23 +20,34 @@ if [[ "$(hostname)" == 'mihranLaptop' ]]; then
   ~/scripts/random-wallpaper
   # LightDM Lockscreen
   light-locker --lock-on-suspend &
-  bspc config top_padding 20
+  bspc config top_padding 40
 elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
+  # KDE Connect
+  /usr/bin/kdeconnect-indicator &
+
+  # Wake-on-LAN
+  sudo ethtool -s enp3s0 wol g
+
   picom --experimental-backends -bfc # compositor
+
   # Primary display settings
   xrandr --output DisplayPort-0 --primary --mode 1920x1080 --rate 144
   bspc monitor DisplayPort-0 -d 0 1 2 3 4
   bspc monitor HDMI-A-0 -d 5 6 7 8 9
+
   # WALLPAPER (chosen randomly at startup)
   ~/scripts/random-wallpaper
+  # ~/.local/share/Steam/steamapps/common/wallpaper_engine/wallengine --screen-root DisplayPort-0 --screen-root HDMI-A-0 1403625644 &
+
   # LightDM Lockscreen
   light-locker --lock-on-suspend &
-  # PulseAudio + JACK Server
+
+  # PulseAudio Volume control
   pavucontrol &
+
   # OpenRGB
   $HOME/scripts/openrgb_startup &
 
-  bspc config top_padding 40
   # Open discord
   discord &
 
@@ -47,6 +58,11 @@ elif [[ "$(hostname)" == 'mihranDesktop' ]]; then
 
   # Replay Buffer
   obs --startreplaybuffer --minimize-to-tray &
+
+  # ds4 driver for Cemu
+  /usr/bin/python3 -m ds4drv --hidraw --udp --trackpad-mouse &
+
+  bspc config top_padding 40
 fi
 
 
