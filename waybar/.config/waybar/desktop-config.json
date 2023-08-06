@@ -14,7 +14,8 @@
         "tray",
         "cpu",
         "memory",
-        "network"
+        "network",
+        "custom/wlogout"
     ],
     "include": [
         "~/.config/waybar/modules.json"
