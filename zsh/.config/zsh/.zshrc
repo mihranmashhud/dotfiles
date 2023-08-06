@@ -12,16 +12,19 @@ source /usr/share/nvm/init-nvm.sh
 # Node Modules path
 export PATH=$HOME/.node_modules/bin:$PATH
 
-# Coursier (for Scala)
-export PATH="$HOME/.local/share/coursier/bin:$PATH"
-
-# CS451
-export HADOOP_HOME="$HOME/Documents/Courses/CS451/bin/hadoop-3.1.4"
-export SPARK_HOME="$HOME/Documents/Courses/CS451/bin/spark-2.4.8-bin-hadoop2.7"
-export PATH="$HADOOP_HOME/bin:$SPARK_HOME/bin:$PATH"
+# Cargo path
+export PATH=$HOME/.cargo/bin:$PATH
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/default"
+export LD_LIBRARY_PATH="/usr/lib/jvm/default/jre/lib/amd64/server/"
+
+# pnpm
+export PNPM_HOME="/home/mihranmashhud/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
 # Android/Flutter
 # export PATH="$PATH:/opt/android-sdk/platform-tools"
@@ -120,8 +123,6 @@ alias cs-server="ssh -t -X -Y mmashhud@linux.student.cs.uwaterloo.ca 'zsh -l'"
 alias sync-cs-server='~/scripts/push-cs-server && ~/scripts/pull-cs-server'
 # Prefer neovim but not the extra character
 alias vim='nvim -p'
-# Zathura should 'devour' the terminal
-alias zathura='~/scripts/devour zathura'
 # Docker Compose
 alias docker-compose='sudo docker-compose'
 # Alias yay to paru
