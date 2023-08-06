@@ -2,4 +2,4 @@
 
 CHOICE=/tmp/background-choice
 pic="$HOME/Pictures/Backgrounds/$(cat $CHOICE)"
-swaylock $@ -i $pic -s fill
+swaylock $@ -i "$pic" -s fill
